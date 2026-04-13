@@ -2,7 +2,7 @@ from langchain.agents import create_agent
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from tools import web_search , web_scrape
+from tools import web_search, web_scrape, web_open
 from dotenv import load_dotenv
 
 load_dotenv()
