@@ -35,3 +35,8 @@ def web_scrape(url: str) -> str:
     except Exception as e:
         return f"Could not scrape URL: {str(e)}"
 
+@tool("web_open")
+def web_open(id: str, cursor: int = 0) -> str:
+    """Open a URL and return the scraped text content."""
+    return web_scrape(id)
+
