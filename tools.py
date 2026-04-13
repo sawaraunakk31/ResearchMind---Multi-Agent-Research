@@ -23,8 +23,7 @@ def web_search(query : str) -> str:
     
     return "\n----\n".join(out)
 
-@tool("web_scrape")
-def web_scrape(url: str) -> str:
+def _scrape_url(url: str) -> str:
     """Scrape and return clean text content from a given URL for deeper reading."""
     try:
         resp = requests.get(url, timeout=8, headers={"User-Agent": "Mozilla/5.0"})
@@ -35,8 +34,12 @@ def web_scrape(url: str) -> str:
     except Exception as e:
         return f"Could not scrape URL: {str(e)}"
 
+@tool("web_scrape")
+def web_scrape(url: str) -> str:
+    return _scrape_url(url)
+
 @tool("web_open")
 def web_open(id: str, cursor: int = 0) -> str:
     """Open a URL and return the scraped text content."""
-    return web_scrape(id)
+    return _scrape_url(id)
 
